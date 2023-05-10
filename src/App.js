@@ -11,13 +11,10 @@ function App() {
 
   return (
     <Fragment>
-      <Header/>
-      <main >
+      {isLogin && <Header/>}
       <Routes>
-      <Route path="/" element={!isLogin && <Login/> }/>
-      <Route path="/inbox" element={isLogin && <MainMail/>} />
+      <Route path="/" element={isLogin ? <MainMail/> : <Login/> }/> 
       </Routes>
-      </main>
     </Fragment>
   );
 }

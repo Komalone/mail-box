@@ -27,10 +27,10 @@ const Login=()=>{
             return alert("Password is not same")
         }
         else if(isLogin){
-            url= "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDbLh47cYiIULS75nREIYr4JKrs7RQ-Bsk"
+            url= "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDd1udW03Q6zC24ia2xKuVRtJQhevjXgvs"
         }
         else{
-            url="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDbLh47cYiIULS75nREIYr4JKrs7RQ-Bsk"
+            url="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDd1udW03Q6zC24ia2xKuVRtJQhevjXgvs"
         }
         fetch(url,{
             method:'POST',
@@ -51,7 +51,7 @@ const Login=()=>{
                 data.then((resp)=>{
                     console.log(resp);
                     dispatch(authAction.login({email: resp.email, token: resp.idToken}));
-                    navigate('/inbox');
+                    navigate('/');
                 })
             }else{
                 const data= res.json();

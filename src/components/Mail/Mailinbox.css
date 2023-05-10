@@ -1,3 +1,14 @@
 .mailBox{
-    margin: 80px;
+    margin: 0px 60px;
+}
+h2{
+    font-family: math;
+    margin: 30px 50px;
+}
+.navbar-nav{
+    display: contents;
+    font-size: 18px;
+}
+.navbar-nav button{
+    border-radius: 25px;
 }
