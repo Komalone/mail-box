@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import Login from "./components/auth/Login";
+import MainMail from "./components/Mail/MainMail";
+import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Header from "./components/Mail/Header";
 
 function App() {
+  const isLogin=useSelector(state=> state.auth.isUserLogin)
+  console.log(isLogin);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Header/>
+      <main >
+      <Routes>
+      <Route path="/" element={!isLogin && <Login/> }/>
+      <Route path="/inbox" element={isLogin && <MainMail/>} />
+      </Routes>
+      </main>
+    </Fragment>
   );
 }
 
