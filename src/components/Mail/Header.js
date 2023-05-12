@@ -1,6 +1,6 @@
 import React from "react";
-import './Mailinbox.css';
-import {Nav, Navbar, Container} from 'react-bootstrap'
+import './Header.css';
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authAction } from "../UI/auth-reducer";
 
@@ -12,17 +12,17 @@ const Header=()=>{
 
 return (
     <>
-    <Navbar expand="lg">
-            <Container>
-            <Navbar.Brand href="/"><h2>Mail IN-Box</h2></Navbar.Brand>
-                <Nav className="header">
-                    <button><Nav.Link to="/">COMPOSE</Nav.Link></button>
-                    <Nav.Link to="/">Inbox</Nav.Link>
-                    {<Nav.Link to="/">Sent Mail</Nav.Link>}
-                    {<button onClick={logoutHandler}>Logout</button>}
-                    </Nav>
-            </Container>
-        </Navbar>
+    <nav className="heading">
+            <div >
+            <h2>Mail IN-Box</h2>
+                <ul className="navbar-nav mr-auto">
+                    <li><Link to="/compose">COMPOSE</Link></li>
+                    <li><Link to="/">Inbox</Link></li>
+                    <li><Link to="/">Sent Mail</Link></li>
+                    <li><button onClick={logoutHandler}>Logout</button></li>
+                    </ul>
+            </div>
+        </nav>
     </>
 );
 }

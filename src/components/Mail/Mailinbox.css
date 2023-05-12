@@ -1,14 +1,11 @@
-.mailBox{
-    margin: 0px 60px;
+.composemail{
+    margin: 80px 30px;
+    max-width: 800px;
 }
-h2{
-    font-family: math;
-    margin: 30px 50px;
+.card {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.navbar-nav{
-    display: contents;
-    font-size: 18px;
-}
-.navbar-nav button{
-    border-radius: 25px;
+.card h3 span{
+    font-size: medium;
+    font-family:cursive
 }

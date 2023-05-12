@@ -1,9 +1,11 @@
 import { Fragment } from "react";
+import './App.css';
 import Login from "./components/auth/Login";
-import MainMail from "./components/Mail/MainMail";
+import MainMail from "./components/Mail/ComposeMail";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Header from "./components/Mail/Header";
+import Inbox from "./components/Mail/Inbox";
 
 function App() {
   const isLogin=useSelector(state=> state.auth.isUserLogin)
@@ -11,10 +13,14 @@ function App() {
 
   return (
     <Fragment>
+      <div className="main">
       {isLogin && <Header/>}
       <Routes>
-      <Route path="/" element={isLogin ? <MainMail/> : <Login/> }/> 
+      <Route path="/" element={isLogin ? <Inbox/> : <Login/>} />
+      <Route path="/compose" element={isLogin ? <MainMail/> : <Login/> }/> 
+
       </Routes>
+      </div>
     </Fragment>
   );
 }

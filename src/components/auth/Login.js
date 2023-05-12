@@ -61,7 +61,8 @@ const Login=()=>{
             }
         })
       };
-      const myStyle={backgroundImage : `url(${image})`, backgroundSize: 'cover'}
+      const myStyle={backgroundImage : `url(${image})`, backgroundSize: 'auto', margin: '80px 0px' ,
+      padding: '100px 300px'}
     
     return (
         <div style={myStyle}>
@@ -88,7 +89,7 @@ const Login=()=>{
         {isLogin ? "Don't Have Account? Sign Up " : 'Login with existing account'}
         </button>
     </Card>
-        </div>
+    </div>
     );
 }
 

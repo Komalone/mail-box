@@ -9,7 +9,7 @@ import axios from 'axios';
 const MainMail=()=>{
     const [editorState, setEditor]= useState(EditorState.createEmpty())
     //console.log(editorState);
-    const [email, setEmail]= useState('');
+    const [toEmail, setEmail]= useState('');
     const [subject, setSub]= useState('');
 
     const emailChange=(e)=>{
@@ -21,18 +21,21 @@ const MainMail=()=>{
 
     const onSubmitHandler=(e)=>{
         e.preventDefault();
-        console.log(email, subject);
-        const toEmail= email.replace(/[@.]/g,"");
+        console.log(toEmail, subject);
+        const toEmailInbox= toEmail.replace(/[@.]/g,"");
         const fromEmail= localStorage.getItem("email").replace(/[@.]/g,"");
         
+       // console.log("to email", toEmailInbox);
+       // console.log("from email", fromEmail);
         const message={
-            to: email,
+            to: toEmail,
+            from:localStorage.getItem("email"),
             subject: subject,
             message: editorState.getCurrentContent().getPlainText(),
             date: new Date().toLocaleDateString()
         }
         
-       axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${toEmail}/sentbox.json`, message)
+       axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${toEmailInbox}/inbox.json`, message)
        .then((res)=>{
         console.log(res);
         setEmail("");
@@ -43,7 +46,7 @@ const MainMail=()=>{
         alert(err);
        })
 
-       axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${fromEmail}/inbox.json`, message)
+       axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${fromEmail}/sentbox.json`, message)
        .then((res)=>{
         console.log(res);
         setEmail("");
@@ -58,10 +61,10 @@ const MainMail=()=>{
 
     return (
         <div>
-            <form className="mailBox" onSubmit={onSubmitHandler} >
+            <form className="composemail" onSubmit={onSubmitHandler} >
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>To</Form.Label>
-            <Form.Control type="email" value={email} onChange={emailChange} placeholder="Enter email"  />
+            <Form.Control type="email" value={toEmail} onChange={emailChange} placeholder="Enter email"  />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
