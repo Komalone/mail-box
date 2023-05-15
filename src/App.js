@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Header from "./components/Mail/Header";
 import Inbox from "./components/Mail/Inbox";
+import SentBox from "./components/Mail/SentInbox";
 
 function App() {
   const isLogin=useSelector(state=> state.auth.isUserLogin)
@@ -18,7 +19,7 @@ function App() {
       <Routes>
       <Route path="/" element={isLogin ? <Inbox/> : <Login/>} />
       <Route path="/compose" element={isLogin ? <MainMail/> : <Login/> }/> 
-
+      <Route path="/sentbox" element={isLogin && <SentBox/>} />
       </Routes>
       </div>
     </Fragment>

@@ -34,7 +34,7 @@ const Inbox=()=>{
         }
         })
         .catch((err)=>{console.log(err);})
-    },[render]);
+    },[render, fromEmail]);
 
     const onRead=(item)=>{
         //console.log(item);

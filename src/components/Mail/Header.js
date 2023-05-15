@@ -18,7 +18,7 @@ return (
                 <ul className="navbar-nav mr-auto">
                     <li><Link to="/compose">COMPOSE</Link></li>
                     <li><Link to="/">Inbox</Link></li>
-                    <li><Link to="/">Sent Mail</Link></li>
+                    <li><Link to="/sentbox">Sent Mail</Link></li>
                     <li><button onClick={logoutHandler}>Logout</button></li>
                     </ul>
             </div>
