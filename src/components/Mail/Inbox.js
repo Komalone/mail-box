@@ -1,4 +1,4 @@
-import { ListGroup, Card } from "react-bootstrap";
+import { ListGroup, Card, Button } from "react-bootstrap";
 import {useDispatch, useSelector} from 'react-redux';
 import { authAction } from "../UI/auth-reducer";
 import './Mailinbox.css';
@@ -51,6 +51,15 @@ const Inbox=()=>{
         dispatch(authAction.closeReadMassage());
     }
 
+    const deleteHandler=(id)=>{
+        console.log(id)
+        axios.delete(`https://cart-api-87764-default-rtdb.firebaseio.com/${fromEmail}/inbox/${id}.json`)
+        .then((res)=>{
+            console.log("delete mail")
+            setRender((prev)=> !prev);
+        })
+    }
+
     const tickBox={
         backgroundColor: !tick ? '#fff' : 'aliceblue'
     }
@@ -67,13 +76,15 @@ const Inbox=()=>{
                 { mailMsg.reverse().map((item)=>
                 <div key={item.id} >
                 <ListGroup.Item action 
-                className="d-flex  align-items-center" style={tickBox} onClick={()=>onRead(item)}>
+                className="d-flex  align-items-center" style={tickBox} >
                     <input type="checkbox" />
-                    <div className="ms-3 me-auto" >
+                    <div className="ms-3 me-auto" onClick={()=>onRead(item)}>
                         <div className="fw-bold">{item.from}</div>
                         {item.subject}
                          </div>
+                    <Button variant="danger" onClick={()=>deleteHandler(item.id)}> Delete</Button>
                 </ListGroup.Item>
+                
                 </div>)}
             </ListGroup>
             </Card.Body>}
