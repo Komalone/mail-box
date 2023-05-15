@@ -37,7 +37,7 @@ const MainMail=()=>{
         
        axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${toEmailInbox}/inbox.json`, message)
        .then((res)=>{
-        console.log(res);
+        //console.log(res);
         setEmail("");
         setSub("");
         setEditor("");
@@ -48,7 +48,7 @@ const MainMail=()=>{
 
        axios.post(`https://cart-api-87764-default-rtdb.firebaseio.com/${fromEmail}/sentbox.json`, message)
        .then((res)=>{
-        console.log(res);
+        //console.log(res);
         setEmail("");
         setSub("");
         setEditor("");
