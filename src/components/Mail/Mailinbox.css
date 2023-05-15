@@ -9,3 +9,14 @@
     font-size: medium;
     font-family:cursive
 }
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.card-subtitle{
+    color: saddlebrown;
+}
+.card-text{
+    font-size: 20px;
+    font-family: monospace;
+}
